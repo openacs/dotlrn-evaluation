@@ -9,19 +9,19 @@ ad_library {
 
 namespace eval dotlrn_evaluation {}
 
-ad_proc -private dotlrn_evaluation::install {} {
+ad_proc -public dotlrn_evaluation::install {} {
     dotLRN Evaluation package install proc
 } {
     register_portal_datasource_impl
 }
 
-ad_proc -private dotlrn_evaluation::uninstall {} {
+ad_proc -public dotlrn_evaluation::uninstall {} {
     dotLRN Evaluation package uninstall proc
 } {
     unregister_portal_datasource_impl
 }
 
-ad_proc -private dotlrn_evaluation::register_portal_datasource_impl {} {
+ad_proc -public dotlrn_evaluation::register_portal_datasource_impl {} {
     Register the service contract implementation for the dotlrn_applet service contract
 } {
     set spec {
@@ -48,7 +48,7 @@ ad_proc -private dotlrn_evaluation::register_portal_datasource_impl {} {
     acs_sc::impl::new_from_spec -spec $spec
 }
 
-ad_proc -private dotlrn_evaluation::unregister_portal_datasource_impl {} {
+ad_proc -public dotlrn_evaluation::unregister_portal_datasource_impl {} {
     Unregister service contract implementations
 } {
     acs_sc::impl::delete \

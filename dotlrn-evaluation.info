@@ -16,8 +16,8 @@
         <requires url="evaluation-portlet" version="0.1d"/>
 
         <callbacks>
-            <callback type="after-install"  proc="dotlrn_evaluation::install"/>
             <callback type="before-uninstall"  proc="dotlrn_evaluation::uninstall"/>
+            <callback type="after-install"  proc="dotlrn_evaluation::install"/>
         </callbacks>
         <parameters>
         <!-- No version parameters -->
