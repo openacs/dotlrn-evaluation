@@ -99,14 +99,14 @@ ad_proc -public dotlrn_evaluation::add_user_to_community {
 } {
     Add a user to a specifc dotlrn community
 } {
-    set package_id [dotlrn_community::get_applet_package_id -community_id $community_id -applet_key [applet_key]]
-    set portal_id [dotlrn::get_portal_id -user_id $user_id]
+#     set package_id [dotlrn_community::get_applet_package_id -community_id $community_id -applet_key [applet_key]]
+#     set portal_id [dotlrn::get_portal_id -user_id $user_id]
 
-    # use "append" here since we want to aggregate
-    set args [ns_set create]
-    ns_set put $args package_id $package_id
-    ns_set put $args param_action append
-    add_portlet_helper $portal_id $args
+#     # use "append" here since we want to aggregate
+#     set args [ns_set create]
+#     ns_set put $args package_id $package_id
+#     ns_set put $args param_action append
+#     add_portlet_helper $portal_id $args
 }
 
 ad_proc -public dotlrn_evaluation::remove_user_from_community {
@@ -151,12 +151,16 @@ ad_proc -public dotlrn_evaluation::add_portlet_helper {
     evaluation_assignments_portlet::add_self_to_page \
         -portal_id $portal_id \
         -package_id [ns_set get $args package_id] \
-        -param_action [ns_set get $args param_action]
+        -param_action [ns_set get $args param_action] \
+	-force_region [parameter::get -parameter AssignmentsPortletRegion -package_id [ns_set get $args package_id]] \
+	-page_name [parameter::get -parameter EvaluationPageName -package_id [ns_set get $args package_id]]
 
     evaluation_evaluations_portlet::add_self_to_page \
         -portal_id $portal_id \
         -package_id [ns_set get $args package_id] \
-        -param_action [ns_set get $args param_action]
+        -param_action [ns_set get $args param_action] \
+	-force_region [parameter::get -parameter EvaluationsPortletRegion -package_id [ns_set get $args package_id]] \
+	-page_name [parameter::get -parameter EvaluationPageName -package_id [ns_set get $args package_id]]
 }
 
 ad_proc -public dotlrn_evaluation::remove_portlet {
