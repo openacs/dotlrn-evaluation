@@ -29,7 +29,7 @@ ad_proc -public dotlrn_evaluation::my_package_key {} {
 ad_proc -public dotlrn_evaluation::get_pretty_name {} {
     returns the pretty name
 } {
-    return "#dotlrn-evaluation.Evaluation_#"
+    return "[_ dotlrn-evaluation.Evaluation_]"
 }
 
 ad_proc -public dotlrn_evaluation::add_applet {} {
@@ -196,8 +196,54 @@ ad_proc -public dotlrn_evaluation::clone {
                             -community_id $old_community_id \
                             -applet_key [applet_key]
                        ]
+    
+    set grades [db_list_of_lists get_grades {}]
+    
+    db_dml delete_grades {}
 
-    db_exec_plsql call_evaluation_clone {}
+    foreach grade $grades {
+	set grade_id [db_nextval acs_object_id_seq]
+	set revision_id [evaluation::new_grade -new_item_p t -item_id $grade_id -content_type evaluation_grades -content_table evaluation_grades -content_id grade_id -name [lindex $grade 0] -plural_name [lindex $grade 1] -description [lindex $grade 2] -weight [lindex $grade 3] -package_id $new_package_id]
+	content::item::set_live_revision -revision_id $revision_id	    
+	
+	set grade_item_id [lindex $grade 4]
+	set tasks [db_list_of_lists get_tasks {}]
+	
+	
+	foreach task $tasks {
+	    set forums_related_p [lindex $task 12]
+	    set points [lindex $task 13]
+	    set relative_weight [lindex $task 14]
+	    set perfect_score [lindex $task 15]
+	    set task_id [db_nextval acs_object_id_seq]
+	    set task_revision_id [evaluation::new_task -new_item_p t -item_id $task_id \
+				      -content_type evaluation_tasks \
+				      -content_table evaluation_tasks \
+				      -content_id task_id \
+				      -name [lindex $task 0] \
+				      -description [lindex $task 1] \
+				      -weight [lindex $task 2] \
+				      -grade_item_id $grade_id \
+				      -number_of_members [lindex $task 3] \
+				      -online_p [lindex $task 4] \
+				      -storage_type [lindex $task 5] \
+				      -due_date [lindex $task 6] \
+				      -late_submit_p [lindex $task 7] \
+				      -requires_grade_p [lindex $task 8] \
+				      -title [lindex $task 9] \
+				      -mime_type [lindex $task 10] \
+				      -estimated_time [lindex $task 11] \
+				      -package_id $new_package_id]
+	    
+	    content::item::set_live_revision -revision_id $task_revision_id
+	    
+	    # by the moment, since I'm having a date problem with oracle10g, I have to do this in order 
+	    # to store the entire date
+	    
+	    db_dml update_tasks {}
+	}
+    }
+   
     return $new_package_id
 }
 
