@@ -7,13 +7,13 @@
     <initial-install-p>f</initial-install-p>
     <singleton-p>t</singleton-p>
     
-    <version name="2.3.1b1" url="http://openacs.org/repository/download/apm/dotlrn-evaluation-2.3.1b1.apm">
+    <version name="2.3.1" url="http://openacs.org/repository/download/apm/dotlrn-evaluation-2.3.1.apm">
         <owner url="mailto:jopez@galileo.edu">Jose Pablo Escobedo Del Cid</owner>
-        <release-date>2007-09-05</release-date>
+        <release-date>2007-09-08</release-date>
 
-        <provides url="dotlrn-evaluation" version="2.3.1b1"/>
-        <requires url="dotlrn" version="2.3.1b1"/>
-        <requires url="evaluation-portlet" version="2.3.1b1"/>
+        <provides url="dotlrn-evaluation" version="2.3.1"/>
+        <requires url="dotlrn" version="2.3.1"/>
+        <requires url="evaluation-portlet" version="2.3.1"/>
 
         <callbacks>
             <callback type="before-uninstall"  proc="dotlrn_evaluation::uninstall"/>
