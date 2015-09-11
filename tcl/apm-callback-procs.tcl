@@ -55,3 +55,9 @@ ad_proc -public dotlrn_evaluation::unregister_portal_datasource_impl {} {
         -contract_name "dotlrn_applet" \
         -impl_name "dotlrn_evaluation"
 }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:
