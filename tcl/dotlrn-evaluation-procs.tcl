@@ -78,7 +78,7 @@ ad_proc -public dotlrn_evaluation::remove_applet_from_community {
 } {
     remove the applet from the community
 } {
-    ad_return_complaint 1 "[applet_key] remove_applet_from_community not implimented!"
+    ad_return_complaint 1 "[applet_key] remove_applet_from_community not implemented!"
 }
 
 ad_proc -public dotlrn_evaluation::add_user {
@@ -257,3 +257,9 @@ ad_proc -public dotlrn_evaluation::change_event_handler {
 } { 
 }   
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:
