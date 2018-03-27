@@ -50,7 +50,7 @@ ad_proc -public dotlrn_evaluation::remove_applet {} {
 ad_proc -public dotlrn_evaluation::add_applet_to_community {
     community_id
 } {
-    Add the evaluation applet to a specifc dotlrn community
+    Add the evaluation applet to a specific dotlrn community
 } {
     set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
 
@@ -100,7 +100,7 @@ ad_proc -public dotlrn_evaluation::add_user_to_community {
     community_id
     user_id
 } {
-    Add a user to a specifc dotlrn community
+    Add a user to a specific dotlrn community
 } {
 #     set package_id [dotlrn_community::get_applet_package_id -community_id $community_id -applet_key [applet_key]]
 #     set portal_id [dotlrn::get_portal_id -user_id $user_id]
