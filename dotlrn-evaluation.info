@@ -7,14 +7,14 @@
     <initial-install-p>f</initial-install-p>
     <singleton-p>t</singleton-p>
     
-    <version name="2.9.1" url="http://openacs.org/repository/download/apm/dotlrn-evaluation-2.9.1.apm">
+    <version name="2.10.0d0" url="http://openacs.org/repository/download/apm/dotlrn-evaluation-2.10.0d0.apm">
         <owner url="mailto:jopez@galileo.edu">Jose Pablo Escobedo Del Cid</owner>
         <summary>DotLRN Integration (Applet) for Evaluation Package</summary>
         <release-date>2017-08-06</release-date>
 
-        <provides url="dotlrn-evaluation" version="2.9.1"/>
-        <requires url="dotlrn" version="2.9.1"/>
-        <requires url="evaluation-portlet" version="2.9.1"/>
+        <provides url="dotlrn-evaluation" version="2.10.0d0"/>
+        <requires url="dotlrn" version="2.10.0d0"/>
+        <requires url="evaluation-portlet" version="2.10.0d0"/>
 
         <callbacks>
             <callback type="before-uninstall"  proc="dotlrn_evaluation::uninstall"/>
