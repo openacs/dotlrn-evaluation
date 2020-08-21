@@ -26,6 +26,17 @@ aa_register_case \
     aa_equals "Applet key" "[dotlrn_evaluation::applet_key]" "dotlrn_evaluation"
 }
 
+aa_register_case -procs {
+        dotlrn_evaluation::get_pretty_name
+    } -cats {
+        api
+        production_safe
+    } dotlrn_evaluation_names {
+        Test diverse name procs.
+} {
+    aa_equals "dotlrn-evaluation pretty name" "[dotlrn_evaluation::get_pretty_name]" "[_ dotlrn-evaluation.Evaluation_]"
+}
+
 # Local variables:
 #    mode: tcl
 #    tcl-indent-level: 4
