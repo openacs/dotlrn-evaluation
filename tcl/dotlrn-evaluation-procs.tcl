@@ -81,7 +81,7 @@ ad_proc -public dotlrn_evaluation::remove_applet_from_community {
     ad_return_complaint 1 "[applet_key] remove_applet_from_community not implemented!"
 }
 
-ad_proc -public dotlrn_evaluation::add_user {
+ad_proc -private dotlrn_evaluation::add_user {
     user_id
 } {
     one time user-specifuc init
@@ -89,14 +89,14 @@ ad_proc -public dotlrn_evaluation::add_user {
     # noop
 }
 
-ad_proc -public dotlrn_evaluation::remove_user {
+ad_proc -private dotlrn_evaluation::remove_user {
     user_id
 } {
 } {
     # noop
 }
 
-ad_proc -public dotlrn_evaluation::add_user_to_community {
+ad_proc -private dotlrn_evaluation::add_user_to_community {
     community_id
     user_id
 } {
@@ -247,7 +247,7 @@ ad_proc -public dotlrn_evaluation::clone {
     return $new_package_id
 }
 
-ad_proc -public dotlrn_evaluation::change_event_handler {
+ad_proc -private dotlrn_evaluation::change_event_handler {
     community_id
     event
     old_value
