@@ -41,10 +41,7 @@ ad_proc -public dotlrn_evaluation::add_applet {} {
 ad_proc -public dotlrn_evaluation::remove_applet {} {
     One time destroy.
 } {
-    set applet_id [dotlrn_applet::get_applet_id_from_key [my_package_key]]
-    db_exec_plsql delete_applet_from_communities { *SQL* }
-    db_exec_plsql delete_applet { *SQL* }
-#    dotlrn_applet::remove_applet_from_dotlrn -applet_key [applet_key]
+    dotlrn_applet::remove_applet_from_dotlrn -applet_key [applet_key]
 }
 
 ad_proc -public dotlrn_evaluation::add_applet_to_community {
