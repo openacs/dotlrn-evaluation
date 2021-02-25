@@ -43,6 +43,7 @@ aa_register_case -procs {
         dotlrn_evaluation::add_portlet_helper
         dotlrn_evaluation::remove_portlet
         dotlrn_evaluation::remove_applet
+        portal::exists_p
     } -cats {
         api
     } dotlrn_evaluation__applet_portlet {
@@ -76,10 +77,7 @@ aa_register_case -procs {
         # Create portal
         #
         set portal_id [portal::create $portal_user_id]
-        set portal_exists_p [db_0or1row foo {
-            select * from portals where portal_id=:portal_id
-        }]
-        if {$portal_exists_p} {
+        if {[portal::exists_p $portal_id]} {
             aa_log "Portal created (portal_id: $portal_id)"
             set applet_key [dotlrn_evaluation::applet_key]
             if {[dotlrn_applet::get_applet_id_from_key -applet_key $applet_key] ne ""} {
