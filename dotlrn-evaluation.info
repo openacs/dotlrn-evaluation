@@ -7,7 +7,7 @@
     <initial-install-p>f</initial-install-p>
     <singleton-p>t</singleton-p>
     
-    <version name="2.10.1b1" url="http://openacs.org/repository/download/apm/dotlrn-evaluation-2.10.0.apm">
+    <version name="2.10.1b1" url="http://openacs.org/repository/download/apm/dotlrn-evaluation-2.10.1b1.apm">
         <owner url="mailto:jopez@galileo.edu">Jose Pablo Escobedo Del Cid</owner>
         <summary>DotLRN Integration (Applet) for Evaluation Package</summary>
         <release-date>2021-09-16</release-date>
